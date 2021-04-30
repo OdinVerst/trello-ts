@@ -7,10 +7,16 @@ import {AddNewItem} from "./AddNewItem";
 export const App = () => {
     return (
         <AppContainer>
-            <Column text={'Hello'}>
-                <Card text={'New task'}/>
+            <Column text="To Do">
+                <Card text="Generate app scaffold"/>
             </Column>
-            <AddNewItem onAdd={console.log} toggleButtonText={"+ Add another list"} />
+            <Column text="In Progress">
+                <Card text="Learn Typescript"/>
+            </Column>
+            <Column text="Done">
+                <Card text="Begin to use static typing"/>
+            </Column>
+            <AddNewItem onAdd={console.log} toggleButtonText={"+ Add another list"}/>
         </AppContainer>
     );
 }
