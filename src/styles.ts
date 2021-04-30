@@ -56,7 +56,7 @@ export const AddItemButton = styled.button<AddItemButtonProps>`
   }
 `;
 
-export const NewItemFormContainer = styled.div`
+export const NewItemFormContainer = styled.form`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
