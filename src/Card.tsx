@@ -2,7 +2,8 @@ import React from 'react';
 import {CardContainer} from './styles';
 
 type CardProps = {
-    text: string
+    text: string,
+    id: string
 }
 
 export const Card = ({text}: CardProps) => {
