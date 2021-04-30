@@ -1,5 +1,6 @@
 import React, {FC, useState} from 'react';
 import {NewItemButton, NewItemFormContainer, NewItemInput} from './styles';
+import {useFocus} from './utils/useFocus';
 
 type NewItemFormProps = {
     onAdd(text: string): void
@@ -7,6 +8,7 @@ type NewItemFormProps = {
 
 export const NewItemForm: FC<NewItemFormProps> = ({onAdd}) => {
     const [text, setText] = useState<string>('');
+    const inputRef = useFocus()
 
     const submitHandler: React.FormEventHandler = (evt) => {
         evt.preventDefault();
@@ -15,7 +17,7 @@ export const NewItemForm: FC<NewItemFormProps> = ({onAdd}) => {
 
     return (
         <NewItemFormContainer onSubmit={submitHandler}>
-            <NewItemInput value={text} onChange={(evt) => setText(evt.target.value)}/>
+            <NewItemInput ref={inputRef} value={text} onChange={(evt) => setText(evt.target.value)}/>
             <NewItemButton>Create</NewItemButton>
         </NewItemFormContainer>
     );
