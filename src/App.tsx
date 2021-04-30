@@ -1,10 +1,11 @@
 import React from 'react';
-import { AppContainer } from './styles';
+import {AppContainer} from './styles';
+import {Column} from "./Column";
 
 export const App = () => {
-  return (
-      <AppContainer>
-          Columns will go here
-      </AppContainer>
-  );
+    return (
+        <AppContainer>
+            <Column text={'Hello'} />
+        </AppContainer>
+    );
 }
