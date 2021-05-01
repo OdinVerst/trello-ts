@@ -1,13 +1,12 @@
-import React, {useContext, useReducer} from 'react';
+import React, {useContext} from 'react';
 import {AppContainer} from './styles';
 import {Column} from "./Column";
 import {AddNewItem} from "./AddNewItem";
 import {AppStateContext} from "./state/AppStateContext";
 import {addList} from "./state/actions";
-import {appStateReducer} from "./state/appStateReducer";
 
 export const App = () => {
-    const [{lists}, dispatch] = useReducer(appStateReducer, useContext(AppStateContext))
+    const {lists, dispatch} = useContext(AppStateContext);
 
     return (
         <AppContainer>

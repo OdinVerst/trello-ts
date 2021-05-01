@@ -1,9 +1,8 @@
-import React, {FC, useContext, useReducer} from 'react';
+import React, {FC, useContext} from 'react';
 import {ColumnContainer, ColumnTitle} from './styles';
 import {AddNewItem} from "./AddNewItem";
 import {AppStateContext} from "./state/AppStateContext";
 import {Card} from "./Card";
-import {appStateReducer} from "./state/appStateReducer";
 import {addTask} from "./state/actions";
 
 type ColumnProps = {
@@ -12,12 +11,9 @@ type ColumnProps = {
 }
 
 export const Column: FC<ColumnProps> = ({text, id}) => {
-    const {getTasksByID} = useContext(AppStateContext);
-    const [state, dispatch] = useReducer(appStateReducer, useContext(AppStateContext))
+    const {getTasksByID, dispatch} = useContext(AppStateContext);
 
     const tasks = getTasksByID(id);
-
-
 
     return (
         <ColumnContainer>
