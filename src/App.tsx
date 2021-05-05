@@ -1,12 +1,12 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {AppContainer} from './styles';
 import {Column} from "./Column";
 import {AddNewItem} from "./AddNewItem";
-import {AppStateContext} from "./state/AppStateContext";
+import {useAppState} from "./state/AppStateContext";
 import {addList} from "./state/actions";
 
 export const App = () => {
-    const {lists, dispatch} = useContext(AppStateContext);
+    const {lists, dispatch} = useAppState();
 
     return (
         <AppContainer>

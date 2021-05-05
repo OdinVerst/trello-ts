@@ -1,7 +1,7 @@
-import React, {FC, useContext} from 'react';
+import React, {FC} from 'react';
 import {ColumnContainer, ColumnTitle} from './styles';
 import {AddNewItem} from "./AddNewItem";
-import {AppStateContext} from "./state/AppStateContext";
+import {useAppState} from "./state/AppStateContext";
 import {Card} from "./Card";
 import {addTask} from "./state/actions";
 
@@ -11,7 +11,7 @@ type ColumnProps = {
 }
 
 export const Column: FC<ColumnProps> = ({text, id}) => {
-    const {getTasksByID, dispatch} = useContext(AppStateContext);
+    const {getTasksByID, dispatch} = useAppState();
 
     const tasks = getTasksByID(id);
 
