@@ -1,6 +1,7 @@
 import {nanoid} from "nanoid";
 import {Actions} from "./actions";
 import {findItemByID, moveItem} from "../utils/arrayUtils";
+import {DragItem} from "../DragItem";
 
 export type Task = {
     id: string
@@ -12,6 +13,7 @@ export type List = {
     tasks: Task[]
 }
 export type AppState = {
+    draggedItem: DragItem | null;
     lists: List[]
 }
 
