@@ -11,7 +11,15 @@ interface AddItemAction {
     }
 }
 
-export type Actions = AddItemAction | AddListAction;
+interface MoveItemAction {
+    type: "MOVE_ITEM",
+    payload: {
+        draggedID: string,
+        hoverID: string
+    }
+}
+
+export type Actions = AddItemAction | AddListAction | MoveItemAction;
 
 export const addTask = (text:string, listID:string):Actions => {
     return {
@@ -22,10 +30,21 @@ export const addTask = (text:string, listID:string):Actions => {
     }
 }
 
+export const moveTask = (draggedID:string, hoverID:string):Actions => {
+    return {
+        type: "MOVE_ITEM",
+        payload: {
+            draggedID,
+            hoverID
+        }
+    }
+}
+
 export const addList = (payload: string):Actions => {
     return {
         type: "ADD_LIST",
         payload
     }
 }
+
 

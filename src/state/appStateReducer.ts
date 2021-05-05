@@ -1,6 +1,6 @@
 import {nanoid} from "nanoid";
 import {Actions} from "./actions";
-import {findItemByID} from "../utils/arrayUtils";
+import {findItemByID, moveItem} from "../utils/arrayUtils";
 
 export type Task = {
     id: string
@@ -25,6 +25,12 @@ export const appStateReducer = (draft: AppState, actions: Actions):AppState | vo
                 id: nanoid(),
                 text: text
             })
+            break;
+        case "MOVE_ITEM":
+            const { draggedID, hoverID } = actions.payload;
+            const dragIndex = findItemByID(draft.lists, draggedID);
+            const hoverIndex = findItemByID(draft.lists, hoverID);
+            draft.lists = moveItem(draft.lists, dragIndex, hoverIndex)
             break;
         case 'ADD_LIST':
             draft.lists.push({
