@@ -6,6 +6,7 @@ import {Card} from "./Card";
 import {addTask, moveList} from "./state/actions";
 import {useItemDrag} from "./utils/useItemDrag";
 import { useDrop } from 'react-dnd';
+import {isHidden} from "./utils/isHidden";
 
 type ColumnProps = {
     text: string;
@@ -35,7 +36,7 @@ export const Column: FC<ColumnProps> = ({text, id}) => {
     drop(drag(ref))
 
     return (
-        <ColumnContainer ref={ref}>
+        <ColumnContainer ref={ref} isHidden={isHidden(draggedItem, "COLUMN", id)}>
             <ColumnTitle>{text}</ColumnTitle>
             {tasks.map(task => <Card key={task.id} text={task.text} id={task.id} />)}
             <AddNewItem onAdd={(text) => dispatch(addTask(text, id))} toggleButtonText={"+ Add another task"} dark />

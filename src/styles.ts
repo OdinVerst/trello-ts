@@ -10,7 +10,15 @@ export const AppContainer = styled.div`
   background-color: #3179ba;
 `;
 
-export const ColumnContainer = styled.div`
+interface DragPreviewContainerProps {
+    isHidden?: boolean
+}
+
+export const DragPreviewContainer = styled.div<DragPreviewContainerProps>`
+  opacity: ${props => (props.isHidden ? 0.3 : 1)};
+`;
+
+export const ColumnContainer = styled(DragPreviewContainer)`
   flex-grow: 0;
   width: 300px;
   min-height: 40px;
@@ -25,7 +33,7 @@ export const ColumnTitle = styled.div`
   font-weight: bold;
 `;
 
-export const CardContainer = styled.div`
+export const CardContainer = styled(DragPreviewContainer)`
   max-width: 300px;
   margin-bottom: 0.5rem;
   padding: 0.5rem 1rem;
