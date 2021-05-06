@@ -1,3 +1,5 @@
+import {DragItem} from "../DragItem";
+
 interface AddListAction {
     type: "ADD_LIST",
     payload: string
@@ -11,15 +13,20 @@ interface AddItemAction {
     }
 }
 
-interface MoveItemAction {
-    type: "MOVE_ITEM",
+interface MoveListAction {
+    type: "MOVE_LIST",
     payload: {
         draggedID: string,
         hoverID: string
     }
 }
 
-export type Actions = AddItemAction | AddListAction | MoveItemAction;
+interface setDraggedItemAction {
+    type: "SET_DRAGGED_ITEM",
+    payload: DragItem | null
+}
+
+export type Actions = AddItemAction | AddListAction | MoveListAction | setDraggedItemAction;
 
 export const addTask = (text:string, listID:string):Actions => {
     return {
@@ -30,9 +37,16 @@ export const addTask = (text:string, listID:string):Actions => {
     }
 }
 
-export const moveTask = (draggedID:string, hoverID:string):Actions => {
+export const setDraggedItem = (draggedItem: DragItem | null):Actions => {
     return {
-        type: "MOVE_ITEM",
+        type: "SET_DRAGGED_ITEM",
+        payload: draggedItem
+    }
+}
+
+export const moveList = (draggedID:string, hoverID:string):Actions => {
+    return {
+        type: "MOVE_LIST",
         payload: {
             draggedID,
             hoverID
