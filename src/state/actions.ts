@@ -21,14 +21,24 @@ interface MoveListAction {
     }
 }
 
+interface MoveItemAction {
+    type: "MOVE_TASK"
+    payload: {
+        draggedItemID: string,
+        hoveredItemID: string | null,
+        sourceColumnID: string,
+        targetColumnID: string
+    }
+}
+
 interface setDraggedItemAction {
     type: "SET_DRAGGED_ITEM",
     payload: DragItem | null
 }
 
-export type Actions = AddItemAction | AddListAction | MoveListAction | setDraggedItemAction;
+export type Actions = AddItemAction | AddListAction | MoveListAction | setDraggedItemAction | MoveItemAction;
 
-export const addTask = (text:string, listID:string):Actions => {
+export const addTask = (text: string, listID: string): Actions => {
     return {
         type: "ADD_ITEM",
         payload: {
@@ -37,14 +47,14 @@ export const addTask = (text:string, listID:string):Actions => {
     }
 }
 
-export const setDraggedItem = (draggedItem: DragItem | null):Actions => {
+export const setDraggedItem = (draggedItem: DragItem | null): Actions => {
     return {
         type: "SET_DRAGGED_ITEM",
         payload: draggedItem
     }
 }
 
-export const moveList = (draggedID:string, hoverID:string):Actions => {
+export const moveList = (draggedID: string, hoverID: string): Actions => {
     return {
         type: "MOVE_LIST",
         payload: {
@@ -54,7 +64,19 @@ export const moveList = (draggedID:string, hoverID:string):Actions => {
     }
 }
 
-export const addList = (payload: string):Actions => {
+export const moveTask = (draggedItemID: string, hoveredItemID: string | null, sourceColumnID: string, targetColumnID: string): Actions => {
+    return {
+        type: "MOVE_TASK",
+        payload: {
+            draggedItemID,
+            hoveredItemID,
+            sourceColumnID,
+            targetColumnID
+        }
+    }
+}
+
+export const addList = (payload: string): Actions => {
     return {
         type: "ADD_LIST",
         payload

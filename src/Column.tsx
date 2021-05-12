@@ -39,7 +39,7 @@ export const Column: FC<ColumnProps> = ({text, id, isPreview}) => {
     return (
         <ColumnContainer ref={ref} isHidden={isHidden(draggedItem, "COLUMN", id, isPreview)} isPreview={isPreview}>
             <ColumnTitle>{text}</ColumnTitle>
-            {tasks.map(task => <Card key={task.id} text={task.text} id={task.id}/>)}
+            {tasks.map(task => <Card key={task.id} text={task.text} id={task.id} columnId={id} />)}
             <AddNewItem onAdd={(text) => dispatch(addTask(text, id))} toggleButtonText={"+ Add another task"} dark/>
         </ColumnContainer>
     );
