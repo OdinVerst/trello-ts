@@ -35,7 +35,6 @@ export const Column: FC<ColumnProps> = ({text, id, isPreview}) => {
     })
 
     drop(drag(ref))
-
     return (
         <ColumnContainer ref={ref} isHidden={isHidden(draggedItem, "COLUMN", id, isPreview)} isPreview={isPreview}>
             <ColumnTitle>{text}</ColumnTitle>
