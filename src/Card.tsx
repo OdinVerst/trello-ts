@@ -4,7 +4,7 @@ import {isHidden} from "./utils/isHidden";
 import {useAppState} from "./state/AppStateContext";
 import {useItemDrag} from "./utils/useItemDrag";
 import {useDrop} from "react-dnd";
-import {moveTask} from "./state/actions";
+import {moveTask, setDraggedItem} from "./state/actions";
 
 type CardProps = {
     text: string,
@@ -31,7 +31,8 @@ export const Card = ({text, id, columnId, isPreview}: CardProps) => {
             if (draggedItem.type !== "CARD") return;
             if (draggedItem.id === id) return;
 
-            dispatch(moveTask(draggedItem.id, id, draggedItem.columnId, columnId))
+            dispatch(moveTask(draggedItem.id, id, draggedItem.columnId, columnId));
+            dispatch(setDraggedItem({ ...draggedItem, columnId }));
         }
     })
 
